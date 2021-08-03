@@ -1,118 +1,129 @@
 package com.priyank.db.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
+
 /*import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;*/
-
 @Entity //@Entity annotation indicates that the class is a persistent Java class.
 public class Employee {
 
     @Id // @Id annotation is for the primary key.
     @GeneratedValue(strategy = GenerationType.SEQUENCE) //@GeneratedValue annotation is used to define generation strategy for the primary key.
     // GenerationType.AUTO means Auto Increment field.
-    @Column(name="EmployeeID") //@Column annotation is used to define the column in database that maps annotated field.
-    private Integer EmployeeID;
-    @Column(name="Name")
-    private String Name;
-    @Column(name="Mobile")
-    private Integer Mobile;
-    @Column(name="Email")
-    private String Email;
-    @Column(name="DeptID")
-    private Integer DeptID;
-    @Column(name="Salary")
-    private Integer Salary;
-    @Column(name="DOJ")
-    private Integer DOJ;
-    @Column(name="Degree")
-    private String Degree;
-    @Column(name="Address")
-    private String Address;
-    @Column(name="IsActive")
-    private Integer IsActive;
+    @Column(name="employee_id") //@Column annotation is used to define the column in database that maps annotated field.
+    private Integer employee_id;
+    @NotBlank(message="Name is mandatory")
+    @Column(name="name")
+    private String name;
+    @NotNull
+    @Size(min = 10, max = 10, message="Number should have 10 digits")
+    @Column(name="mobile")
+    private Integer mobile;
+    @Email
+    @NotBlank
+    @Column(name="email")
+    private String email;
+    @NotNull
+    @Column(name="dept_id")
+    private Integer dept_id;
+    @NotNull
+    @Column(name="salary")
+    private Integer salary;
+    @Column(name="doj")
+    private Integer doj;
+    @NotNull
+    @Column(name="degree")
+    private String degree;
+    @NotNull
+    @Column(name="address")
+    private String address;
+    @NotNull
+    @Column(name="is_active")
+    private Integer is_active;
 
     public Employee() {
     }
 
     public Integer getEmployeeID() {
-        return EmployeeID;
+        return employee_id;
     }
 
     public void setEmployeeID(Integer EmployeeID) {
-        this.EmployeeID = EmployeeID;
+        this.employee_id = employee_id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String Name) {
-        this.Name = Name;
+        this.name = name;
     }
 
     public Integer getMobile() {
-        return Mobile;
+        return mobile;
     }
 
     public void setMobile(Integer Mobile) {
-        this.Mobile = Mobile;
+        this.mobile = mobile;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String Email) {
-        this.Email = Email;
+        this.email = email;
     }
 
     public Integer getDeptID() {
-        return DeptID;
+        return dept_id;
     }
 
     public void setDeptID(Integer DeptID) {
-        this.DeptID = DeptID;
+        this.dept_id = dept_id;
     }
 
     public Integer getSalary() {
-        return Salary;
+        return salary;
     }
 
     public void setSalary(Integer Salary) {
-        this.Salary = Salary;
+        this.salary = Salary;
     }
 
     public Integer getDOJ() {
-        return DOJ;
+        return doj;
     }
 
     public void setDOJ(Integer DOJ) {
-        this.DOJ = DOJ;
+        this.doj = doj;
     }
 
     public String getDegree() {
-        return Degree;
+        return degree;
     }
 
     public void setDegree(String Degree) {
-        this.Degree = Degree;
+        this.degree = degree;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String Address) {
-        this.Address = Address;
+        this.address = address;
     }
 
     public Integer getIsActive() {
-        return IsActive;
+        return is_active;
     }
 
     public void setIsActive(Integer IsActive) {
-        this.IsActive = IsActive;
+        this.is_active = is_active;
     }
 }
