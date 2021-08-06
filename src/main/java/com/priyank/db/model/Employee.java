@@ -1,12 +1,18 @@
 package com.priyank.db.model;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
+import com.priyank.db.validators.IsInteger;
+import com.priyank.db.validators.IsLong;
 
-/*import javax.persistence.Column;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.Id;*/
+import javax.persistence.Id;
+
 @Entity //@Entity annotation indicates that the class is a persistent Java class.
 public class Employee {
 
@@ -15,115 +21,115 @@ public class Employee {
     // GenerationType.AUTO means Auto Increment field.
     @Column(name="employee_id") //@Column annotation is used to define the column in database that maps annotated field.
     private Integer employee_id;
-    @NotBlank(message="Name is mandatory")
+    @NotNull
     @Column(name="name")
     private String name;
     @NotNull
-    @Size(min = 10, max = 10, message="Number should have 10 digits")
+    @IsLong
+    @Min(value = (long)7e9)
+    @Max(value = (long)1e10 - 1)
     @Column(name="mobile")
-    private Integer mobile;
+    private long mobile;
+    @NotNull
     @Email
-    @NotBlank
     @Column(name="email")
     private String email;
-    @NotNull
-    @Column(name="dept_id")
-    private Integer dept_id;
-    @NotNull
+    @Min(value = 25000)
+    @IsInteger
     @Column(name="salary")
     private Integer salary;
     @Column(name="doj")
     private Integer doj;
-    @NotNull
     @Column(name="degree")
     private String degree;
-    @NotNull
     @Column(name="address")
     private String address;
-    @NotNull
     @Column(name="is_active")
-    private Integer is_active;
+    private String is_active;
+    @NotNull
+    @Column(name="dept_id")
+    private Integer dept_id;
 
     public Employee() {
     }
 
-    public Integer getEmployeeID() {
+    public Integer getEmployee_id() {
         return employee_id;
     }
 
-    public void setEmployeeID(Integer EmployeeID) {
+    public void setEmployee_id(Integer employee_id) {
         this.employee_id = employee_id;
     }
 
-    public String getName() {
+    public String getname() {
         return name;
     }
 
-    public void setName(String Name) {
+    public void setname(String name) {
         this.name = name;
     }
 
-    public Integer getMobile() {
+    public long getmobile() {
         return mobile;
     }
 
-    public void setMobile(Integer Mobile) {
+    public void setmobile(long mobile) {
         this.mobile = mobile;
     }
 
-    public String getEmail() {
+    public String getemail() {
         return email;
     }
 
-    public void setEmail(String Email) {
+    public void setemail(String email) {
         this.email = email;
     }
 
-    public Integer getDeptID() {
-        return dept_id;
-    }
-
-    public void setDeptID(Integer DeptID) {
-        this.dept_id = dept_id;
-    }
-
-    public Integer getSalary() {
+    public Integer getsalary() {
         return salary;
     }
 
-    public void setSalary(Integer Salary) {
-        this.salary = Salary;
+    public void setSalary(Integer salary) {
+        this.salary = salary;
     }
 
-    public Integer getDOJ() {
+    public Integer getdoj() {
         return doj;
     }
 
-    public void setDOJ(Integer DOJ) {
+    public void setdoj(Integer doj) {
         this.doj = doj;
     }
 
-    public String getDegree() {
+    public String getdegree() {
         return degree;
     }
 
-    public void setDegree(String Degree) {
+    public void setdegree(String degree) {
         this.degree = degree;
     }
 
-    public String getAddress() {
+    public String getaddress() {
         return address;
     }
 
-    public void setAddress(String Address) {
+    public void setaddress(String address) {
         this.address = address;
     }
 
-    public Integer getIsActive() {
+    public String getis_active() {
         return is_active;
     }
 
-    public void setIsActive(Integer IsActive) {
+    public void setis_active(String is_active) {
         this.is_active = is_active;
+    }
+
+    public Integer getdept_id() {
+        return dept_id;
+    }
+
+    public void setdept_id(Integer dept_id) {
+        this.dept_id = dept_id;
     }
 }
