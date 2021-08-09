@@ -1,53 +1,54 @@
 package com.priyank.db.model;
-
-        import javax.persistence.*;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity //@Entity annotation indicates that the class is a persistent Java class.
 public class Department {
 
     @Id //@Id annotation is for the primary key.
     @GeneratedValue(strategy = GenerationType.SEQUENCE) //@GeneratedValue annotation is used to define generation strategy for the primary key.
-    @Column(name="DeptID") //@Column annotation is used to define the column in database that maps annotated field.
-    private Integer DeptID;
-    @Column(name="Name")
-    private String Name;
-    @Column(name="Description")
-    private String Description;
-    @Column(name="IsActive")
-    private Integer IsActive;
+    @Column(name="dept_id") //@Column annotation is used to define the column in database that maps annotated field.
+    private Integer dept_id;
+    @NotBlank
+    @Column(name="name")
+    private String name;
+    @Column(name="description")
+    private String description;
+    @Column(name="is_active")
+    private Integer is_active;
 
     public Department() {
     }
 
-    public Integer getDeptID() {
-        return DeptID;
+    public Integer getdept_id() {
+        return dept_id;
     }
 
-    public void setDeptID(Integer DeptID) {
-        this.DeptID = DeptID;
+    public void setdept_id(Integer dept_id) {
+        this.dept_id = dept_id;
     }
 
-    public String getName() {
-        return Name;
+    public String getname() {
+        return name;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setname(String name) {
+        this.name = name;
     }
 
-    public String getDescription() {
-        return Description;
+    public String getdescription() {
+        return description;
     }
 
-    public void setDescription(String Description) {
-        this.Description = Description;
+    public void setdescription(String description) {
+        this.description = description;
     }
 
-    public Integer getIsActive() {
-        return IsActive;
+    public Integer getis_active() {
+        return is_active;
     }
 
-    public void setIsActive(Integer IsActive) {
-        this.IsActive = IsActive;
+    public void setisactive(Integer is_active) {
+        this.is_active = is_active;
     }
 }
