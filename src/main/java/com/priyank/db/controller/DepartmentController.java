@@ -15,6 +15,7 @@ import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController //@RestController annotation is used to define a controller
 // and to indicate that the return value of the methods should be be bound to the web response body.
@@ -42,13 +43,17 @@ public class DepartmentController {
     }
 
 
-    @DeleteMapping("/department/delete")
-    public ResponseEntity<String> deleteDepartment(@RequestParam("dept_id") Integer dept_id){
-        try {
-            departmentRepository.deleteById(dept_id);
-            return ResponseEntity.ok("Success");
-        } catch(Exception e) {
-            return new ResponseEntity<>("Error: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+    @DeleteMapping("department/delete")
+    public ResponseEntity<?> deleteUser(@RequestParam("dept_id") Integer dept_id){
+        Optional<Department> o = departmentRepository.findById(dept_id);
+        if(o.isPresent()) {
+            Department e = o.get();
+            e.setis_active("Deactivated");
+            departmentRepository.save(e);
+            return ResponseEntity.ok(e.getdept_id());
+        }
+        else {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
 
