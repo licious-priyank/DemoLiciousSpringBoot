@@ -15,7 +15,7 @@ public class Department {
     @Column(name="description")
     private String description;
     @Column(name="is_active")
-    private Integer is_active;
+    private String is_active;
 
     public Department() {
     }
@@ -44,11 +44,14 @@ public class Department {
         this.description = description;
     }
 
-    public Integer getis_active() {
+    public String getis_active() {
         return is_active;
     }
 
-    public void setisactive(Integer is_active) {
+    public void setisactive(String is_active) {
         this.is_active = is_active;
+    }
+
+    public void setis_active(String is_active) {
     }
 }
